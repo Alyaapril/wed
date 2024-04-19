@@ -1,9 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
     let currentIndex = 0;
-    const carouselItems = document.querySelectorAll('.slide');
     let startX;
+    let touchMoved = false;
 
     function goToSlide(index) {
+        const carouselItems = document.querySelectorAll('.slide');
         if (index < 0) {
             index = carouselItems.length - 1;
         } else if (index >= carouselItems.length) {
@@ -15,15 +16,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function handleTouchStart(event) {
         startX = event.touches[0].clientX;
+        touchMoved = false;
     }
 
     function handleTouchMove(event) {
         if (!startX) return;
         const xDiff = startX - event.touches[0].clientX;
-        if (xDiff > 0) {
-            goToNextSlide();
-        } else {
-            goToPrevSlide();
+        if (Math.abs(xDiff) > 10) { // Check if touch moved significantly
+            touchMoved = true;
+        }
+        event.preventDefault(); // Prevent scrolling while swiping
+    }
+
+    function handleTouchEnd(event) {
+        if (!touchMoved) return;
+        const xDiff = startX - event.changedTouches[0].clientX;
+        if (Math.abs(xDiff) > 50) { // Check if swipe distance is significant
+            if (xDiff > 0) {
+                goToNextSlide();
+            } else {
+                goToPrevSlide();
+            }
         }
         startX = null;
     }
@@ -40,4 +53,5 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector('.next').addEventListener('click', goToNextSlide);
     document.querySelector('.carousel').addEventListener('touchstart', handleTouchStart);
     document.querySelector('.carousel').addEventListener('touchmove', handleTouchMove);
+    document.querySelector('.carousel').addEventListener('touchend', handleTouchEnd);
 });
