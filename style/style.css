@@ -22,8 +22,7 @@
 
 .photo {
   display: flex;
-  width: auto;
-  height: auto;
+  max-width: 369px;
   background-color: transparent;
   margin-top: -47px;
   margin-left: auto;
@@ -241,4 +240,8 @@ button.next {
   color: #F6EEE8;
   font-size: 23px;
   text-transform: uppercase;
+}
+
+@media only screen and (max-width: 280px) {
+
 }
