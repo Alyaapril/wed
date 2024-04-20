@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
             index = 0;
         }
         currentIndex = index;
-        document.querySelector('.carousel').style.transform = `translateX(-${currentIndex * 100}%)`;
+        document.querySelector('.carousel-container').style.transform = `translateX(-${currentIndex * 100}%)`;
     }
 
     function handleTouchStart(event) {
