@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let startX = 0;
     let isDragging = false;
     const carouselItems = document.querySelectorAll('.slide');
-    const carousel = document.querySelector('.carousel');
+    const carousel = document.querySelector('.carousel-container');
 
     function goToSlide(index) {
         if (index < 0) {
@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function handleTouchStart(event) {
-        if (!event.target.closest('.carousel')) return; // Проверяем, является ли элемент, на котором началось касание, частью карусели
+        if (!event.target.closest('.carousel-container')) return; // Проверяем, является ли элемент, на котором началось касание, частью карусели
         isDragging = true;
         startX = event.touches[0].clientX;
     }
