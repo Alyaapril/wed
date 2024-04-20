@@ -1,6 +1,5 @@
 * {
   background-color: #F6EEE8;
-
   margin: 0;
 }
 
@@ -249,6 +248,3 @@ button.next {
   font-family: "Oswald", sans-serif;
 }
 
-@media only screen and (max-width: 280px) {
-
-}
