@@ -1,6 +1,6 @@
 * {
   background-color: #F6EEE8;
-  font-family: "Oswald", sans-serif;
+
   margin: 0;
 }
 
@@ -9,6 +9,7 @@
 }
 
 .title {
+  font-family: "Oswald", sans-serif;
   display: flex;
   font-weight: 500;
   font-size: 70px;
@@ -44,6 +45,7 @@
 }
 
 .date {
+  font-family: "Oswald", sans-serif;
   margin-top: 22px;
   font-weight: 500;
   font-size: 35px;
@@ -57,6 +59,7 @@
 }
 
 .main-text {
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: calc(16px + 4 * (100vw - 380px) / 820);
   line-height: 112%;
@@ -64,8 +67,8 @@
   color: #53341d;
   text-align: center;
   margin-bottom: 62px;
-  margin-left: 12px;
-  margin-right: 12px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 
@@ -88,6 +91,7 @@
 }
 
 .subtitle-time {
+  font-family: "Oswald", sans-serif;
   font-weight: 500;
   font-size: 35px;
   line-height: 100%;
@@ -95,12 +99,12 @@
   text-transform: uppercase;
   color: #e25800;
   margin-top: -155px;
-  margin-left: 12px;
   max-width: 100px;
 }
 
 
 .subtitle {
+  font-family: "Oswald", sans-serif;
   font-weight: 500;
   font-size: 35px;
   line-height: 100%;
@@ -156,8 +160,9 @@
 
 
 .info-text {
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
-  font-size:  calc(16px + 4 * (100vw - 380px) / 820);
+  font-size:  calc(17px + 4 * (100vw - 380px) / 820);
   line-height: 122%;
   letter-spacing: -0.04em;
   color: #53341d;
@@ -241,6 +246,7 @@ button.next {
   color: #F6EEE8;
   font-size: 23px;
   text-transform: uppercase;
+  font-family: "Oswald", sans-serif;
 }
 
 @media only screen and (max-width: 280px) {
