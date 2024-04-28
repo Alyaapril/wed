@@ -30,15 +30,15 @@
 //     let currentIndex = 0;
 //     let startX = 0;
 //     let isDragging = false;
-//     const carouselItems = document.querySelectorAll('.slide');
+//     const carouselItems = document.querySelectorAll('.carousel');
 
-//     function goToSlide(index) {
-//         if (index < 0) {
-//             index = carouselItems.length - 1;
-//         } else if (index >= carouselItems.length) {
-//             index = 0;
+//     function goToSlide(i) {
+//         if (i < 0) {
+//             i = carouselItems.length - 1;
+//         } else if (i >= carouselItems.length) {
+//             i = 0;
 //         }
-//         currentIndex = index;
+//         currentIndex = i;
 //         document.querySelector('.carousel').style.transform = `translateX(-${currentIndex * 100}%)`;
 //     }
 
@@ -72,7 +72,6 @@
 
 
 
-
 document.addEventListener("DOMContentLoaded", () => {
     let currentIndex = 0;
     let startX = 0;
@@ -93,8 +92,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function handleTouchStart(event) {
         const touch = event.touches[0];
-        isDragging = true;
         startX = touch.clientX;
+        isDragging = true;
     }
 
     function handleTouchMove(event) {
