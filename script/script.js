@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function handleTouchStart(event) {
         const touch = event.touches[0];
         startX = touch.clientX;
-        isDragging = true;
+        isDragging = true; // Устанавливаем флаг isDragging в true при начале касания
     }
 
     function handleTouchMove(event) {
@@ -118,3 +118,4 @@ document.addEventListener("DOMContentLoaded", () => {
     carousel.addEventListener('touchmove', handleTouchMove);
     carousel.addEventListener('touchend', handleTouchEnd);
 });
+
