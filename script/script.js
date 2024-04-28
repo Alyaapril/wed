@@ -108,7 +108,6 @@ document.addEventListener("DOMContentLoaded", () => {
             } else {
                 goToSlide(currentIndex + 1);
             }
-            isDragging = false;
         }
     }
 
