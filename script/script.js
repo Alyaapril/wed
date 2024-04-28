@@ -83,12 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const totalSlides = carouselItems.length;
 
     function goToSlide(index) {
-        if (index < 0) {
-            index = totalSlides - 1;
-        } else if (index >= totalSlides) {
-            index = 0;
-        }
-        currentIndex = index;
+        currentIndex = (index + totalSlides) % totalSlides;
         carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
     }
 
@@ -103,11 +98,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const touch = event.touches[0];
         const xDiff = touch.clientX - startX;
         if (Math.abs(xDiff) > 50) {
-            if (xDiff > 0) {
-                goToSlide(currentIndex - 1);
-            } else {
-                goToSlide(currentIndex + 1);
-            }
+            goToSlide(currentIndex + Math.sign(xDiff));
+            isDragging = false;
         }
     }
 
@@ -115,8 +107,13 @@ document.addEventListener("DOMContentLoaded", () => {
         isDragging = false;
     }
 
-    document.querySelector('.prev').addEventListener('click', () => goToSlide(currentIndex - 1));
-    document.querySelector('.next').addEventListener('click', () => goToSlide(currentIndex + 1));
+    document.querySelectorAll('.prev, .next').forEach(button => {
+        button.addEventListener('click', () => {
+            const direction = button.classList.contains('prev') ? -1 : 1;
+            goToSlide(currentIndex + direction);
+        });
+    });
+
     carousel.addEventListener('touchstart', handleTouchStart);
     carousel.addEventListener('touchmove', handleTouchMove);
     carousel.addEventListener('touchend', handleTouchEnd);
