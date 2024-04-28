@@ -74,48 +74,51 @@
 
 document.addEventListener("DOMContentLoaded", () => {
     let currentIndex = 0;
-    let startX = 0;
-    let isDragging = false;
     const carousel = document.querySelector('.carousel');
     const carouselItems = document.querySelectorAll('.slide');
     const totalSlides = carouselItems.length;
 
-    function goToNextSlide() {
-        currentIndex = (currentIndex + 1) % totalSlides;
+    function goToSlide(index) {
+        currentIndex = (index + totalSlides) % totalSlides;
         carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    function goToNextSlide() {
+        goToSlide(currentIndex + 1);
     }
 
     function goToPrevSlide() {
-        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-        carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+        goToSlide(currentIndex - 1);
     }
 
     function handleTouchStart(event) {
-        const touch = event.touches[0];
-        startX = touch.clientX;
-        isDragging = true; // Устанавливаем флаг isDragging в true при начале касания
+        startX = event.touches[0].clientX;
     }
 
     function handleTouchMove(event) {
-        if (!isDragging) return;
-        const touch = event.touches[0];
-        const xDiff = touch.clientX - startX;
+        const xDiff = event.touches[0].clientX - startX;
         if (Math.abs(xDiff) > 50) {
             if (xDiff > 0) {
                 goToPrevSlide();
             } else {
                 goToNextSlide();
             }
-            isDragging = false;
+            startX = event.touches[0].clientX;
         }
     }
 
-    function handleTouchEnd() {
-        isDragging = false;
+    function handlePrevClick() {
+        goToPrevSlide();
+    }
+
+    function handleNextClick() {
+        goToNextSlide();
     }
 
     carousel.addEventListener('touchstart', handleTouchStart);
     carousel.addEventListener('touchmove', handleTouchMove);
-    carousel.addEventListener('touchend', handleTouchEnd);
+    document.querySelector('.prev').addEventListener('click', handlePrevClick);
+    document.querySelector('.next').addEventListener('click', handleNextClick);
 });
+
 
