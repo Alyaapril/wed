@@ -80,11 +80,12 @@ document.addEventListener("DOMContentLoaded", () => {
     let isDragging = false;
     const carousel = document.querySelector('.carousel');
     const carouselItems = document.querySelectorAll('.slide');
+    const totalSlides = carouselItems.length;
 
     function goToSlide(index) {
         if (index < 0) {
-            index = carouselItems.length - 1;
-        } else if (index >= carouselItems.length) {
+            index = totalSlides - 1;
+        } else if (index >= totalSlides) {
             index = 0;
         }
         currentIndex = index;
@@ -115,6 +116,8 @@ document.addEventListener("DOMContentLoaded", () => {
         isDragging = false;
     }
 
+    document.querySelector('.prev').addEventListener('click', () => goToSlide(currentIndex - 1));
+    document.querySelector('.next').addEventListener('click', () => goToSlide(currentIndex + 1));
     carousel.addEventListener('touchstart', handleTouchStart);
     carousel.addEventListener('touchmove', handleTouchMove);
     carousel.addEventListener('touchend', handleTouchEnd);
